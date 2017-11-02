@@ -3,6 +3,9 @@ GIT安装与学习
 
 https://github.com/
 hjhuanga/cathy@152
+*************************************************************************
+参考文档：
+http://blog.jobbole.com/78960/
 
 
 echo "# AutoProject" >> README.md
@@ -263,3 +266,90 @@ $ git stash pop
 
 # 生成一个可供发布的压缩包
 $ git archive
+
+
+
+C:/Users/wlpc/.git/
+
+安装git客户端：
+Git-2.6.2-64-bit.exe
+安装完成后，配置path环境变量：
+C:\Program Files\Git\cmd
+
+
+git config --global user.name "hjhuanga"
+git config --global user.email "973238285@qq.com"
+
+
+C:/Users/wlpc/.git/
+
+
+
+
+
+$ ssh-keygen -t rsa -C "973238285@qq.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/wlpc/.ssh/id_rsa):
+Created directory '/c/Users/wlpc/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/wlpc/.ssh/id_rsa.
+Your public key has been saved in /c/Users/wlpc/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:q9kdg61d4aMIpm+FpHUWibVBcaaBFihxTubYDFDFoCM 973238285@qq.com
+The key's randomart image is:
++---[RSA 2048]----+
+|.o===..**oo      |
+| ..@o + oB       |
+|E ..=.  o.       |
+|..    o o        |
+|     + +S   .    |
+|    . . .+ . .   |
+|      o.o + +    |
+|     o.= = = .   |
+|    .o+ + +      |
++----[SHA256]-----+
+
+wlpc@DESKTOP-GDHIQBA MINGW64 ~/.ssh (master)
+$ ssh -T git@github.com
+The authenticity of host 'github.com (192.30.255.113)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.255.113' (RSA) to the list of know                                                                                                                n hosts.
+Hi hjhuanga! You've successfully authenticated, but GitHub does not provide shel                                                                                                                l access.
+
+wlpc@DESKTOP-GDHIQBA MINGW64 ~/.ssh (master)
+$ git remote add origin https://github.com/hjhuanga/AutoProject.git
+
+
+报错1：：
+$ git push  -u origin master
+error: src refspec master does not match any.
+error: failed to push some refs to 'https://github.com/hjhuanga/AutoProject.git'
+解决：
+说明当前目录下无文件可提交，需切换到git的本地目录。
+
+
+报错2：：
+$ git push  -u origin master
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+解决：
+$ git remote add origin git@github.com:hjhuanga/AutoProject.git
+解释：
+$ git remote add origin git@github.com:hjhuanga(github用户名）/AutoProject（项目名）.git
+解决后：
+$ git push  -u origin master
+Warning: Permanently added the RSA host key for IP address '192.30.255.112' to t                                                                                                                he list of known hosts.
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 2.41 KiB | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git@github.com:hjhuanga/AutoProject.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
